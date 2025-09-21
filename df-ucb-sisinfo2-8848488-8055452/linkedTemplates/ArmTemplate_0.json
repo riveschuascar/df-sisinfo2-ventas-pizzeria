@@ -365,34 +365,44 @@
 						"type": "AzureBlobStorageLocation",
 						"fileName": "ventas.xlsx",
 						"container": "ventas"
-					}
+					},
+					"firstRowAsHeader": true
 				},
 				"schema": [
 					{
+						"name": "NoFactura",
 						"type": "String"
 					},
 					{
+						"name": "CodInventario",
 						"type": "String"
 					},
 					{
+						"name": "Descripcion",
 						"type": "String"
 					},
 					{
+						"name": "Cantidad",
 						"type": "String"
 					},
 					{
+						"name": "Fecha",
 						"type": "String"
 					},
 					{
+						"name": "PrecioUnitario",
 						"type": "String"
 					},
 					{
+						"name": "Total",
 						"type": "String"
 					},
 					{
+						"name": "IdCliente",
 						"type": "String"
 					},
 					{
+						"name": "Pais",
 						"type": "String"
 					}
 				]
