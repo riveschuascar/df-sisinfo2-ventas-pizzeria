@@ -16,7 +16,8 @@
 				"type": "AzureBlobStorageLocation",
 				"fileName": "ventas.xlsx",
 				"container": "ventas"
-			}
+			},
+			"firstRowAsHeader": true
 		},
 		"schema": [
 			{
