@@ -1,0 +1,99 @@
+{
+	"name": "df_hechos_ventas",
+	"properties": {
+		"folder": {
+			"name": "dw_ventas"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ventas_csv",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "hechos_ventas",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "cast1"
+				},
+				{
+					"name": "cast2"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          NoFactura as integer,",
+				"          CodInventario as string,",
+				"          Descripcion as string,",
+				"          Cantidad as integer,",
+				"          Fecha as date 'yyyy-MM-dd',",
+				"          PrecioUnitario as string,",
+				"          Total as string,",
+				"          IdCliente as integer,",
+				"          Pais as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 derive(PrecioUnitario = replace(PrecioUnitario, ',','.'),",
+				"          Total = replace(Total, ',','.')) ~> derivedColumn1",
+				"derivedColumn1 cast(output(",
+				"          PrecioUnitario as decimal(10,2)",
+				"     ),",
+				"     errors: true) ~> cast1",
+				"cast1 cast(output(",
+				"          Total as decimal(10,2)",
+				"     ),",
+				"     errors: true) ~> cast2",
+				"cast2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          id_venta as integer,",
+				"          noFactura as integer,",
+				"          cantidad as integer,",
+				"          precioUnitario as decimal(9,2),",
+				"          total as decimal(9,2),",
+				"          fecha as date,",
+				"          codInventario as string,",
+				"          pais as string,",
+				"          idCliente as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'allErrors',",
+				"     transactionCommit: 'single',",
+				"     reportSuccessOnError: false,",
+				"     mapColumn(",
+				"          noFactura = NoFactura,",
+				"          cantidad = Cantidad,",
+				"          precioUnitario = PrecioUnitario,",
+				"          total = Total,",
+				"          fecha = Fecha,",
+				"          codInventario = CodInventario,",
+				"          pais = Pais,",
+				"          idCliente = IdCliente",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}

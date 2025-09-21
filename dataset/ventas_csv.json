@@ -1,0 +1,64 @@
+{
+	"name": "ventas_csv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_sa_ventas_csv",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Origen"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "ventas.csv",
+				"container": "ventas"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "NoFactura",
+				"type": "String"
+			},
+			{
+				"name": "CodInventario",
+				"type": "String"
+			},
+			{
+				"name": "Descripcion",
+				"type": "String"
+			},
+			{
+				"name": "Cantidad",
+				"type": "String"
+			},
+			{
+				"name": "Fecha",
+				"type": "String"
+			},
+			{
+				"name": "PrecioUnitario",
+				"type": "String"
+			},
+			{
+				"name": "Total",
+				"type": "String"
+			},
+			{
+				"name": "IdCliente",
+				"type": "String"
+			},
+			{
+				"name": "Pais",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

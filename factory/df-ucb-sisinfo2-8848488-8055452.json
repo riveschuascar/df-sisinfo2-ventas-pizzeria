@@ -1,0 +1,9 @@
+{
+	"name": "df-ucb-sisinfo2-8848488-8055452",
+	"location": "centralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "314b9d6d-cded-4ec9-ac2f-135584833272",
+		"tenantId": "cc28633f-12b8-46cb-bc15-951dae239b4d"
+	}
+}

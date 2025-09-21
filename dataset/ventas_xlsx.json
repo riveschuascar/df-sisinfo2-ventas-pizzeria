@@ -1,0 +1,52 @@
+{
+	"name": "ventas_xlsx",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_sa_ventas_xlsx",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Origen"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "ventas",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "ventas.xlsx",
+				"container": "ventas"
+			}
+		},
+		"schema": [
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

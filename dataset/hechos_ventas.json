@@ -1,0 +1,65 @@
+{
+	"name": "hechos_ventas",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_sql_dw_ventas",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DW_ventas"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id_venta",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "noFactura",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "cantidad",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "precioUnitario",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 2
+			},
+			{
+				"name": "total",
+				"type": "decimal",
+				"precision": 9,
+				"scale": 2
+			},
+			{
+				"name": "fecha",
+				"type": "date"
+			},
+			{
+				"name": "codInventario",
+				"type": "varchar"
+			},
+			{
+				"name": "pais",
+				"type": "varchar"
+			},
+			{
+				"name": "idCliente",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "hechos_ventas"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
